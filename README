@@ -1,1 +1,3 @@
 Script to call API method to reboot your virtual server on Clodo
+
+Because default $PATH on Clodo's servers is '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin' we can substitute default reboot command by our own, if placed it at '/usr/local/sbin'.
