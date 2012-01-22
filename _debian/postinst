@@ -1,0 +1,36 @@
+#!/bin/bash -e
+
+. /usr/share/debconf/confmodule
+
+chmod 700 /etc/clodo-reboot.conf
+chmod 500 /usr/local/sbin/reboot
+
+
+case "$1" in
+configure|reconfigure)
+                db_input critical "clodo-reboot/loginname" || true
+                db_go || true
+                db_get "clodo-reboot/loginname"
+                api_user="$RET"
+
+                db_input critical "clodo-reboot/apikey" || true
+                db_go || true
+                db_get "clodo-reboot/apikey"
+                api_key="$RET"
+
+                db_input critical "clodo-reboot/servernum" || true
+                db_go || true
+                db_get "clodo-reboot/servernum"
+                server_num="$RET"
+
+                sed -i -e "s/CLODO_USER=.\+/CLODO_USER=\"$api_user\"/g" /etc/clodo-reboot.conf
+                sed -i -e "s/CLODO_KEY=.\+/CLODO_KEY=\"$api_key\"/g" /etc/clodo-reboot.conf
+                sed -i -e "s/SERVER_NUM=.\+/SERVER_NUM=$server_num/g" /etc/clodo-reboot.conf
+        ;;
+*)
+        echo "config called with unknown argument \`$1'" >&2
+        exit 1
+        ;;
+esac
+
+exit 0

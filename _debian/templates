@@ -1,0 +1,15 @@
+Template: clodo-reboot/loginname
+Type: string
+Description: Enter your login from panel.clodo.ru
+Default:
+
+Template: clodo-reboot/apikey
+Type: string
+Description: Enter your key, to access Clodo API
+Default: 
+
+Template: clodo-reboot/servernum
+Type: string
+Description: Example: if your server ID is 1234-56, then number of your server is 56
+ Enter number of this server
+Default:

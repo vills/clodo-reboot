@@ -1,0 +1,9 @@
+Package: clodo-reboot
+Version: 0.2.1-1
+Maintainer: Vil Surkin <vills@clodo.ru>
+Architecture: all
+Section: utils
+Description: Normal reboot your Clodo's VPS
+ Script to call API method to reboot your virtual server on Clodo
+Depends: curl, debconf
+Origin: clodo.ru
