@@ -17,7 +17,7 @@ INSTALL
 Download file 'reboot', put it to /usr/local/sbin and change access modes to 500
 
 # wget -O /usr/local/sbin/reboot https://raw.github.com/vills/clodo-reboot/master/reboot.sh
-# chmod 500 /usr/local/sbin
+# chmod 500 /usr/local/sbin/reboot
 (you must be logged as root)
 
 
