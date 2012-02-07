@@ -1,11 +1,19 @@
 #!/bin/bash
 
 # Simple bash-script to reboot your Clodo's VPS from console.
-# Writen by Vil Surkin <vills@clodo.ru>, 2011
+# Writen by Vil Surkin <vills@clodo.ru>, 2012
 
-CL_VERSION="0.2"
+CL_VERSION="0.2.4"
 
-. /etc/clodo-reboot.conf
+. /root/.clodo-reboot
+
+if [ ! -f /root/.clodo-reboot ]; then
+	echo "You need put your auth data to /root/.clodo-reboot"
+	exit
+fi
+
+# some loooong and terrible line. will change it
+SERVER_NUM=$(cat /proc/cmdline | tr " " "\n" | grep uos_id | sed -e 's|uos_id=||' | tr "-" " " | awk '{print $2}')
 
 # some functions for colorized output
 function print_error() {
